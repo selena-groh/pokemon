@@ -1,6 +1,6 @@
 import { receivePokemonList } from "./pokemonList";
 import { receiveTypes } from "./types";
-import { showLoading, hideLoading } from "react-redux-loading";
+import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 export const fetchData = url => fetch(url).then(res => res.json());
 
@@ -16,6 +16,8 @@ export function handleInitialData() {
       fetchData("https://pokeapi.co/api/v2/pokemon?limit=2000"),
       fetchTypes()
     ]).then(([pokemonList, types]) => {
+      console.log('pokemonList: ', JSON.stringify(pokemonList));
+      console.log('types: ', JSON.stringify(types));
       dispatch(receivePokemonList(pokemonList.results));
       dispatch(receiveTypes(types));
       dispatch(hideLoading());

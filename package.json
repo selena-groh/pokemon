@@ -2,19 +2,23 @@
   "name": "poke",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://www.selenagroh.com/pokemon",
   "dependencies": {
     "@material-ui/core": "^4.6.0",
     "@material-ui/lab": "^4.0.0-alpha.31",
+    "gh-pages": "^2.1.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-redux": "^7.1.1",
-    "react-redux-loading": "^1.0.1",
+    "react-redux-loading-bar": "^4.5.0",
     "react-scripts": "3.2.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

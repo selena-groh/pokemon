@@ -9,10 +9,10 @@ class Dashboard extends Component {
       <div>
         <h1 style={{ textAlign: "center" }}>Pokémon Matchup!</h1>
         <Grid container justify="center" spacing={2}>
-          <Grid item>
+          <Grid item xs={12} lg={8}>
             <PokemonTeam />
           </Grid>
-          <Grid item>
+          <Grid item xs={12} lg={4}>
             <Types />
           </Grid>
         </Grid>

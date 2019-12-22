@@ -2,18 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import "./App.css";
-import LoadingBar from "react-redux-loading";
+import LoadingBar from "react-redux-loading-bar";
 import Dashboard from "./Dashboard";
+import Loader from "./Loader";
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
   }
   render() {
+    console.log(this.props.loading);
     return (
       <div>
         <LoadingBar />
-        {this.props.loading ? null : <Dashboard />}
+        {this.props.loading ? <Loader /> : <Dashboard />}
       </div>
     );
   }
@@ -22,8 +24,7 @@ class App extends Component {
 const mapStateToProps = ({ pokemonList, types }) => {
   return {
     loading:
-      Object.entries(pokemonList).length === 0 &&
-      pokemonList.constructor === Object &&
+      pokemonList.length === 0 &&
       Object.entries(types).length === 0 &&
       types.constructor === Object
   };

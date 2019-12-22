@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { formatName, formatGenerationName } from "../utils/utils";
+import { formatName } from "../utils/utils";
 
 class Types extends Component {
   render() {
@@ -9,15 +9,23 @@ class Types extends Component {
     return (
       <div style={{ margin: "1rem" }}>
         <h3>Types</h3>
-        <ul>
-          {types.map(type => (
-            <li key={type.id}>
-              {formatName(type.name)} (
-              {type.move_damage_class && `${type.move_damage_class.name}, `}
-              {formatGenerationName(type.generation.name)})
-            </li>
-          ))}
-        </ul>
+        <div>
+          {Object.entries(types)
+            .sort()
+            .map(([typeName, type]) => (
+              <div
+                key={type.id}
+                style={{
+                  backgroundColor: type.colors.backgroundColor,
+                  color: type.colors.textColor,
+                  padding: "10px",
+                  margin: "4px"
+                }}
+              >
+                {formatName(typeName)} ({type.damageScore})
+              </div>
+            ))}
+        </div>
       </div>
     );
   }
